@@ -1,0 +1,30 @@
+﻿
+<div class="PersonUi">
+    <h2>Nieuwe werknemer toevoegen:</h2>
+    <form asp-action ="AddPerson" method="post">
+        <div class="mb-3">
+            <label for="nameInput" class="form-label">Name</label>
+            <input type="text" class="form-control" id="nameInput" placeholder="Enter full name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="descriptionInput" class="form-label">Description</label>
+            <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Enter a short description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="genderInput" class="form-label">Gender</label>
+            <textarea class="form-control" id="genderInput" rows="3" placeholder="Enter your Gender"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="ageInput" class="form-label">Age</label>
+            <input type="number" class="form-control" id="ageInput" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="doeInput" class="form-label">Date of Employment</label>
+            <input type="date" class="form-control" id="doeInput" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

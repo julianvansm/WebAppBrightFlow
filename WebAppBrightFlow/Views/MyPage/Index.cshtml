@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>@ViewBag.Title</title>
+    <style>
+        #addPersonForm {
+            display: none;
+        }
+    </style>
+    <script>
+        function showAddPersonForm() {
+            var form = document.getElementById("addPersonForm");
+            form.style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <div>
+
+        <h2>Klik op een persoon voor meer informatie</h2>
+        <a onclick="showAddPersonForm()" class="btn btn-primary">
+            Add
+       </a>
+
+        <div class="pt-4 surround-box">
+            @foreach (var person in ViewBag.People)
+            {
+                <div class="detail-box">
+                    <p>
+                        <a class="nav-link text-dark"
+                           asp-area=""
+                           asp-controller="MyPage"
+                           asp-action="Detail"
+                           asp-route-name="@person.Name">
+                            @person.Name
+                        </a>
+                    </p>
+                    <p>
+                        @person.Desription
+                    </p>
+                </div>
+            }
+        </div>
+        <div class="mt-5" id="addPersonForm">
+            @Html.Partial("Add")
+        </div>
+    </div>
+</body>
+</html>

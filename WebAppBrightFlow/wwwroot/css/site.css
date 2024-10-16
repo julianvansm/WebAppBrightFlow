@@ -1,0 +1,103 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Paytone One', sans-serif;
+}
+
+.surround-box{
+    display: flex;
+    
+}
+.detail-box {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 2px;
+    width: 50%;
+}
+.detail-box p:first-of-type {
+    font-size: 1.7vw;
+    border-bottom: 1px solid black;
+ 
+}
+.w-full {
+    width: 100%;
+}
+.h-full {
+    height: 100%;
+}
+.textplate {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.nav-link:hover {
+    text-decoration: underline 2px #007793;
+    text-underline-offset: 4px;
+}
+.text-animaton span {
+    --c1: #00a1c6;
+    --c2: #007793;
+    --_p: 93% 83.5% at;
+    --_g1: radial-gradient(var(--_p) bottom, var(--c1) 79.5%, #0000 80%) no-repeat;
+    --_g2: radial-gradient(var(--_p) top, #0000 79.5%, var(--c1) 80%) no-repeat;
+    --_g3: radial-gradient(var(--_p) bottom, var(--c2) 79.5%, #0000 80%) no-repeat;
+    --_g4: radial-gradient(var(--_p) top, #0000 79.5%, var(--c2) 80%) no-repeat;
+    background: var(--_g1), var(--_g2), var(--_g1), var(--_g2), var(--_g3), var(--_g4), var(--_g3), var(--_g4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: #0000;
+    -webkit-text-stroke: 0.1rem black;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    animation: s 5s infinite alternate, m 5s infinite linear;
+    font-size: 2.4rem /* 48px */;
+    line-height: 1;
+}
+@keyframes m {
+    0% {
+        background-position: -200% 100%, -100% 100%, 0% 100%, 100% 100%, 0% 100%, 100% 100%, 200% 100%, 300% 100%
+    }
+
+    100% {
+        background-position: 0% 100%, 100% 100%, 200% 100%, 300% 100%, -200% 100%, -100% 100%, 0% 100%, 100% 100%
+    }
+}
+
+@keyframes s {
+    0% {
+        background-size: 50.5% 60%, 50.5% 60%, 50.5% 60%, 50.5% 60%, 50.5% 90%, 50.5% 90%, 50.5% 90%, 50.5% 90%
+    }
+
+    33% {
+        background-size: 50.5% 70%, 50.5% 70%, 50.5% 70%, 50.5% 70%, 50.5% 75%, 50.5% 75%, 50.5% 75%, 50.5% 75%
+    }
+
+    66% {
+        background-size: 50.5% 55%, 50.5% 55%, 50.5% 55%, 50.5% 55%, 50.5% 80%, 50.5% 80%, 50.5% 80%, 50.5% 80%
+    }
+
+    100% {
+        background-size: 50.5% 90%, 50.5% 90%, 50.5% 90%, 50.5% 90%, 50.5% 95%, 50.5% 95%, 50.5% 95%, 50.5% 95%
+    }
+}

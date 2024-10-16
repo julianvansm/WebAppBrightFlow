@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        <h2> @ViewBag.Name</h2>
+
+
+            <p>
+                <b>
+                    Leeftijd: <br />
+                </b>
+                    @ViewBag.Age jaar oud
+            </p>
+      
+            <p>
+            <b>
+                DienstJaren: <br />
+            </b>
+                @ViewBag.YearOfEmployment Jaar in dienst
+            </p>
+            <p>
+            <b>
+                : <br />
+            </b>
+                @ViewBag.Description
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
