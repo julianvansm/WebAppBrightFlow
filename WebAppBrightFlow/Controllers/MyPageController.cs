@@ -1,24 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MvcMovie.Models;
+using WebAppBrightFlow.Data;
+using Microsoft.EntityFrameworkCore;
+using WebAppBrightFlow.Models;
 using System.Web;
+using System.Linq;
 
 namespace MyPage.Controllers
 {
     public class MyPageController : Controller
     {
+        private readonly ApplicationDbContext _context;
 
-        private List<Person> people = new List<Person>
+
+        public MyPageController(ApplicationDbContext context)
         {
-                new Person { Name = "Jessica", Age = 22 , Gender = "Vrouw", Desription = "Jessica werkt als secretaresse en is een heel vriendelijk en zeer hard werkende werknemer.", YearOfEmployment = DateTime.Today },
-                new Person { Name = "Bob", Age = 53, Gender = "Man", Desription = "Bob zorgt voor een goede en gezellige sfeer als product manager, daarnaast kan hij de lekkerste appeltaarten bakken.", YearOfEmployment = DateTime.Today },
-                new Person { Name = "Charlie", Age = 27, Gender = "Man",  Desription = "Charlie is de van de kantine en houdt enorm van broodjes.", YearOfEmployment = DateTime.Today }
-        };
+            _context = context;
+        }
+
+
+     
 
 
         public IActionResult Index()
         {
-    
-
+            var people = _context.People.ToList();
             ViewBag.People = people;
             return View();
         }
@@ -27,9 +32,9 @@ namespace MyPage.Controllers
 
         public IActionResult Detail(string name)
         {
-            var person = people.FirstOrDefault(p => p.Name == name);
+            var person = _context.People.FirstOrDefault(p => p.Name == name);
 
- 
+
             if (person == null)
             {
                 return NotFound();
@@ -39,7 +44,7 @@ namespace MyPage.Controllers
             ViewBag.Name = person.Name;
             ViewBag.Age = person.Age;
             ViewBag.Gender = person.Gender;
-            ViewBag.Description = person.Desription;
+            ViewBag.Description = person.Description;
             ViewBag.YearOfEmployment = person.YearOfEmployment;
 
 
@@ -49,11 +54,12 @@ namespace MyPage.Controllers
 
 
         [HttpPost]
-        public IActionResult AddPerson (Person newPerson)
+        public IActionResult AddPerson(Person newPerson)
         {
-        
-                people.Add(newPerson);
-                return ();
+            _context.People.Add(newPerson);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
