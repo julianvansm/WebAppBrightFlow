@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using WebAppBrightFlow.Models;
 using System.Web;
 using System.Linq;
+using System.Diagnostics;
 
 namespace MyPage.Controllers
 {
@@ -18,13 +19,21 @@ namespace MyPage.Controllers
         }
 
 
-     
 
 
-        public IActionResult Index()
+
+        public IActionResult Index(string searchQuery)
         {
             var people = _context.People.ToList();
+            if (!String.IsNullOrEmpty(searchQuery))
+            {
+                searchQuery.ToLower();
+
+                people = people.Where(person => person.Name.Contains(searchQuery)).ToList();
+
+            }
             ViewBag.People = people;
+
             return View();
         }
 
@@ -34,12 +43,10 @@ namespace MyPage.Controllers
         {
             var person = _context.People.FirstOrDefault(p => p.Name == name);
 
-
             if (person == null)
             {
                 return NotFound();
             }
-
 
             ViewBag.Name = person.Name;
             ViewBag.Age = person.Age;
@@ -47,15 +54,15 @@ namespace MyPage.Controllers
             ViewBag.Description = person.Description;
             ViewBag.YearOfEmployment = person.YearOfEmployment;
 
-
             return View();
         }
-    
+
 
 
         [HttpPost]
         public IActionResult AddPerson(Person newPerson)
         {
+            Trace.WriteLine("hello");
             _context.People.Add(newPerson);
             _context.SaveChanges();
 

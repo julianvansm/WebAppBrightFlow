@@ -1,9 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using WebAppBrightFlow.Data;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using WebAppBrightFlow.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,8 +12,8 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    dbContext.Database.Migrate(); // Ensure the database is created and migrations are applied
-    SeedDatabase(dbContext); // Call your seed method here
+    dbContext.Database.Migrate();
+    SeedDatabase(dbContext);
 }
 
 if (!app.Environment.IsDevelopment())
@@ -41,7 +37,7 @@ app.Run();
 void SeedDatabase(ApplicationDbContext context)
 {
 
-    if (!context.People.Any()) 
+    if (!context.People.Any())
     {
         context.People.AddRange(
             new Person { Name = "Jessica", Age = 22, Gender = "Vrouw", Description = "Jessica werkt als secretaresse en is een heel vriendelijk en zeer hard werkende werknemer.", YearOfEmployment = 2 },

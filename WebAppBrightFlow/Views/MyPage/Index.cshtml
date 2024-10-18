@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -20,18 +21,33 @@
     </style>
     <script>
         function showAddPersonForm() {
+
             var form = document.getElementById("addPersonForm");
-            form.style.display = "block";
+
+            if (form.style.display === "none") {
+                form.style.display = "block";
+
+            } else {
+                form.style.display = "none";
+
+            }
         }
+       
     </script>
 </head>
 <body>
     <div>
 
         <h2>Klik op een persoon voor meer informatie</h2>
-        <a onclick="showAddPersonForm()" class="btn btn-primary">
-            Add
-       </a>
+      <div class="buttons-list">
+            <a onclick="showAddPersonForm()" class="btn btn-primary">
+                Nieuw
+            </a>
+            <form style="display: flex; justify-content: space-between;" method="get" asp-controller="MyPage" asp-action="Index">
+                <input style="height: 100%; margin-right: 5px;" type="text" name="searchQuery" placeholder="Zoek op naam..." value="@Context.Request.Query["SearchQuery"]" />
+                <button type="submit" class="btn btn-primary">Zoek</button>
+            </form>
+      </div>
 
         <div class="pt-4 surround-box">
             @foreach (var person in ViewBag.People)
@@ -52,8 +68,10 @@
                 </div>
             }
         </div>
-        <div class="mt-5" id="addPersonForm">
-            @Html.Partial("Add")
+        <div  id="addPersonForm">
+
+            <div onclick="showAddPersonForm()" class="gray-backdrop"></div>
+                @Html.Partial("Add")
         </div>
     </div>
 </body>

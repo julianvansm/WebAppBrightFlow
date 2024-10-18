@@ -1,49 +1,83 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
     margin-bottom: 60px;
     font-family: 'Paytone One', sans-serif;
 }
-
-.surround-box{
-    display: flex;
-    
+.gray-backdrop {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(152, 152, 152, 0.6);
+    z-index: 10;
 }
+.buttons-list{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+}
+.add-surround-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 15px;
+    margin: 2px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 4px 4px 9px;
+    z-index: 20;
+}
+
+.surround-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .detail-box {
     border: 1px solid black;
     border-radius: 8px;
     padding: 10px;
-    margin: 2px;
-    width: 50%;
+    margin: 3px;
+    width: 310px;
+    max-width: 310px;
+    min-width: 310px;
 }
-.detail-box p:first-of-type {
-    font-size: 1.7vw;
-    border-bottom: 1px solid black;
- 
-}
+
+    .detail-box p:first-of-type {
+        font-size: 25px;
+        border-bottom: 1px solid black;
+    }
+
 .w-full {
     width: 100%;
 }
+
 .h-full {
     height: 100%;
 }
+
 .textplate {
     height: 100vh;
     display: flex;
@@ -55,6 +89,7 @@ body {
     text-decoration: underline 2px #007793;
     text-underline-offset: 4px;
 }
+
 .text-animaton span {
     --c1: #00a1c6;
     --c2: #007793;
@@ -74,6 +109,7 @@ body {
     font-size: 2.4rem /* 48px */;
     line-height: 1;
 }
+
 @keyframes m {
     0% {
         background-position: -200% 100%, -100% 100%, 0% 100%, 100% 100%, 0% 100%, 100% 100%, 200% 100%, 300% 100%
