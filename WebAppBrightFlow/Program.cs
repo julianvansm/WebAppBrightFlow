@@ -40,9 +40,9 @@ void SeedDatabase(ApplicationDbContext context)
     if (!context.People.Any())
     {
         context.People.AddRange(
-            new Person { Name = "Jessica", Age = 22, Gender = "Vrouw", Description = "Jessica werkt als secretaresse en is een heel vriendelijk en zeer hard werkende werknemer.", YearOfEmployment = 2 },
-            new Person { Name = "Bob", Age = 53, Gender = "Man", Description = "Bob zorgt voor een goede en gezellige sfeer als product manager, daarnaast kan hij de lekkerste appeltaarten bakken.", YearOfEmployment = 2 },
-            new Person { Name = "Charlie", Age = 27, Gender = "Man", Description = "Charlie is de van de kantine en houdt enorm van broodjes.", YearOfEmployment = 2 }
+            new Person { Name = "Jessica", Age = 22, Gender = "Vrouw", Description = "Jessica werkt als secretaresse en is een heel vriendelijk en zeer hard werkende werknemer.", YearOfEmployment = 2021 },
+            new Person { Name = "Bob", Age = 53, Gender = "Man", Description = "Bob zorgt voor een goede en gezellige sfeer als product manager, daarnaast kan hij de lekkerste appeltaarten bakken.", YearOfEmployment = 2006 },
+            new Person { Name = "Charlie", Age = 27, Gender = "Man", Description = "Charlie is de van de kantine en houdt enorm van broodjes.", YearOfEmployment = 2018 }
         );
         context.SaveChanges();
     }

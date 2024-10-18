@@ -1,0 +1,46 @@
+﻿@model WebAppBrightFlow.Models.Person
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Person</title>
+</head>
+<body>
+    <h2>Edit Details for @Model.Name</h2>
+
+    <form asp-action="EditPerson" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label for="nameInput" class="form-label">Naam</label>
+            <input asp-for="Name" class="form-control" id="nameInput" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="ageInput" class="form-label">Leeftijd</label>
+            <input asp-for="Age" class="form-control" id="ageInput" required type="number" />
+        </div>
+
+        <div class="mb-3">
+            <label for="genderInput" class="form-label">Gender</label>
+            <input asp-for="Gender" class="form-control" id="genderInput" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="descriptionInput" class="form-label">Omschrijving</label>
+            <textarea asp-for="Description" class="form-control" id="descriptionInput" rows="3" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="yearOfEmploymentInput" class="form-label">Jaar dienstverband</label>
+            <input asp-for="YearOfEmployment" class="form-control" id="yearOfEmploymentInput" required type="number" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+    </form>
+
+</body>
+</html>

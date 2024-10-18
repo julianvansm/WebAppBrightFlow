@@ -81,5 +81,34 @@ namespace MyPage.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var person = _context.People.FirstOrDefault(p => p.Id == id);
+            if (person == null)
+            {
+                return NotFound();
+            }
+            return View(person);
+        }
+
+        
+        [HttpPost]
+        public IActionResult EditPerson(Person updatedPerson)
+        {
+            var person = _context.People.FirstOrDefault(p => p.Id == updatedPerson.Id);
+            if (person != null)
+            {
+                person.Name = updatedPerson.Name;
+                person.Age = updatedPerson.Age;
+                person.Gender = updatedPerson.Gender;
+                person.Description = updatedPerson.Description;
+                person.YearOfEmployment = updatedPerson.YearOfEmployment;
+
+                _context.SaveChanges(); 
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

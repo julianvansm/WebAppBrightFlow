@@ -27,10 +27,9 @@
 			}
 		}
 
-		// Function to submit the delete form when clicking the delete icon
 		function submitDeleteForm(personId) {
 			var form = document.getElementById('deleteForm-' + personId);
-			form.submit();  // Automatically submit the form
+			form.submit();  
 		}
 	</script>
 </head>
@@ -61,14 +60,18 @@
 								@person.Name
 							</a>
 						</p>
-
-						<div class="delete" onclick="submitDeleteForm(@person.Id)" style="cursor: pointer; color: red;">
-							✖️
-							<form id="deleteForm-@person.Id" asp-action="DeletePerson" method="post">
-								<input type="hidden" name="id" value="@person.Id" />
-							</form>
+						<div class="edit-delete-box">
+							<div class="edit-box" onclick="submitDeleteForm(@person.Id)" style="cursor: pointer; color: red;">
+								<a asp-action="Edit" asp-route-id="@person.Id" class="edit">🖊️</a>
+							</div>
+							<div class="delete" onclick="submitDeleteForm(@person.Id)" style="cursor: pointer; color: red;">
+								✖️
+								<form id="deleteForm-@person.Id" asp-action="DeletePerson" method="post">
+									<input type="hidden" name="id" value="@person.Id" />
+								</form>
+							</div>
 						</div>
-
+						
 					</div>
 					<p>@person.Description</p>
 				</div>

@@ -29,11 +29,10 @@ body {
 
 .delete {
     padding: 7px;
-    background-color: red;
     border: solid black 2px;
-    border-radius: 3px;
+    border-radius: 6px;
     height: min-content;
-
+    background-color: red;
 }
 .delete:hover{
     background-color: orangered;
@@ -65,9 +64,25 @@ body {
     border-radius: 5px;
     box-shadow: 4px 4px 9px;
     z-index: 20;
+    .edit
+}
+.edit-box{
+    display:flex;
+    align-items: center;
 
 }
-
+.edit {
+    margin-right: 3px;
+    padding: 7px;
+    border: solid black 2px;
+    border-radius: 6px;
+    height: min-content;
+    text-decoration: none;
+}
+.edit-delete-box{
+    display:flex;
+    align-items: flex-start;
+}
 .surround-box {
     display: flex;
     flex-wrap: wrap;
