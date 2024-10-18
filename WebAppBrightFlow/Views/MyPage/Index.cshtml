@@ -1,78 +1,83 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
-
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width" />
 
-    <title>@ViewBag.Title</title>
-    <style>
-        #addPersonForm {
-            display: none;
-        }
-    </style>
-    <script>
-        function showAddPersonForm() {
+	<title>@ViewBag.Title</title>
+	<style>
+		#addPersonForm {
+			display: none;
+		}
+	</style>
+	<script>
+		function showAddPersonForm() {
+			var form = document.getElementById("addPersonForm");
+			if (form.style.display === "none") {
+				form.style.display = "block";
+			} else {
+				form.style.display = "none";
+			}
+		}
 
-            var form = document.getElementById("addPersonForm");
-
-            if (form.style.display === "none") {
-                form.style.display = "block";
-
-            } else {
-                form.style.display = "none";
-
-            }
-        }
-       
-    </script>
+		// Function to submit the delete form when clicking the delete icon
+		function submitDeleteForm(personId) {
+			var form = document.getElementById('deleteForm-' + personId);
+			form.submit();  // Automatically submit the form
+		}
+	</script>
 </head>
 <body>
-    <div>
+	<div>
+		<h2>Klik op een persoon voor meer informatie</h2>
+		<div class="buttons-list">
+			<a onclick="showAddPersonForm()" class="btn btn-primary">
+				Nieuw
+			</a>
+			<form style="display: flex; justify-content: space-between;" method="get" asp-controller="MyPage" asp-action="Index">
+				<input style="height: 100%; margin-right: 5px;" type="text" name="searchQuery" placeholder="Zoek op naam..." value="@Context.Request.Query["SearchQuery"]" />
+				<button type="submit" class="btn btn-primary">Zoek</button>
+			</form>
+		</div>
 
-        <h2>Klik op een persoon voor meer informatie</h2>
-      <div class="buttons-list">
-            <a onclick="showAddPersonForm()" class="btn btn-primary">
-                Nieuw
-            </a>
-            <form style="display: flex; justify-content: space-between;" method="get" asp-controller="MyPage" asp-action="Index">
-                <input style="height: 100%; margin-right: 5px;" type="text" name="searchQuery" placeholder="Zoek op naam..." value="@Context.Request.Query["SearchQuery"]" />
-                <button type="submit" class="btn btn-primary">Zoek</button>
-            </form>
-      </div>
+		<div class="pt-4 surround-box">
+			@foreach (var person in ViewBag.People)
+			{
+				<div class="detail-box">
+					<div class="name-box">
+						<p>
+							<a class="nav-link text-dark"
+							   asp-area=""
+							   asp-controller="MyPage"
+							   asp-action="Detail"
+							   asp-route-name="@person.Name">
+								@person.Name
+							</a>
+						</p>
 
-        <div class="pt-4 surround-box">
-            @foreach (var person in ViewBag.People)
-            {
-                <div class="detail-box">
-                    <p>
-                        <a class="nav-link text-dark"
-                           asp-area=""
-                           asp-controller="MyPage"
-                           asp-action="Detail"
-                           asp-route-name="@person.Name">
-                            @person.Name
-                        </a>
-                    </p>
-                    <p>
-                        @person.Description
-                    </p>
-                </div>
-            }
-        </div>
-        <div  id="addPersonForm">
+						<div class="delete" onclick="submitDeleteForm(@person.Id)" style="cursor: pointer; color: red;">
+							✖️
+							<form id="deleteForm-@person.Id" asp-action="DeletePerson" method="post">
+								<input type="hidden" name="id" value="@person.Id" />
+							</form>
+						</div>
 
-            <div onclick="showAddPersonForm()" class="gray-backdrop"></div>
-                @Html.Partial("Add")
-        </div>
-    </div>
+					</div>
+					<p>@person.Description</p>
+				</div>
+			}
+		</div>
+		<div id="addPersonForm">
+			<div onclick="showAddPersonForm()" class="gray-backdrop"></div>
+			@Html.Partial("Add")
+		</div>
+	</div>
 </body>
 </html>

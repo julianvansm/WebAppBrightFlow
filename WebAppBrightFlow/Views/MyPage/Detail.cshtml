@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @{
-    ViewBag.Title = "Detail";
+	ViewBag.Title = "Detail";
 }
 
 
@@ -12,35 +12,32 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
 </head>
 <body>
-    <div>
-        <h2> @ViewBag.Name</h2>
+	<div>
+		<h2> @ViewBag.Name</h2>
 
+		<p>
+			<b>
+				Leeftijd: <br />
+			</b>
+			@ViewBag.Age jaar oud
+		</p>
 
-            <p>
-                <b>
-                    Leeftijd: <br />
-                </b>
-                    @ViewBag.Age jaar oud
-            </p>
-      
-            <p>
-            <b>
-                DienstJaren: <br />
-            </b>
-                @ViewBag.YearOfEmployment Jaar in dienst
-            </p>
-            <p>
-            <b>
-                : <br />
-            </b>
-                @ViewBag.Description
-            </p>
-        </div>
-
-    </div>
+		<p>
+			<b>
+				In dienst Sinds: <br />
+			</b>
+			@ViewBag.Name is al sinds @ViewBag.YearOfEmployment bij ons in dienst!
+		</p>
+		<p>
+			<b>
+				Omschrijving: <br />
+			</b>
+			@ViewBag.Description
+		</p>
+	</div>
 </body>
 </html>

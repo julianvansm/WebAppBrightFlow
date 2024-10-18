@@ -1,32 +1,32 @@
 ﻿@model WebAppBrightFlow.Models.Person
 <div class="add-surround-box">
-    <h2>Nieuwe werknemer toevoegen:</h2>
-    <form asp-action="AddPerson" method="post">
-        <div class="mb-3">
-            <label for="nameInput" class="form-label">Name</label>
-            <input asp-for="Name" class="form-control" id="nameInput" placeholder="Enter full name" required>
-        </div>
+	<h2>Nieuwe werknemer toevoegen:</h2>
+	<form asp-action="AddPerson" method="post">
+		<div class="mb-3">
+			<label for="nameInput" class="form-label">Name</label>
+			<input asp-for="Name" class="form-control" id="nameInput" placeholder="Enter full name" required>
+		</div>
 
-        <div class="mb-3">
-            <label for="descriptionInput" class="form-label">Description</label>
-            <textarea asp-for="Description" class="form-control" id="descriptionInput" rows="3" placeholder="Enter a short description"></textarea>
-        </div>
+		<div class="mb-3">
+			<label for="descriptionInput" class="form-label">Description</label>
+			<textarea asp-for="Description" class="form-control" id="descriptionInput" rows="3" placeholder="Enter a short description"></textarea>
+		</div>
 
-        <div class="mb-3">
-            <label for="genderInput" class="form-label">Gender</label>
-            <input asp-for="Gender" class="form-control" id="genderInput" placeholder="Enter your Gender" required>
-        </div>
+		<div class="mb-3">
+			<label for="genderInput" class="form-label">Gender</label>
+			<input asp-for="Gender" class="form-control" id="genderInput" placeholder="Enter your Gender" required>
+		</div>
 
-        <div class="mb-3">
-            <label for="ageInput" class="form-label">Age</label>
-            <input asp-for="Age" type="number" class="form-control" id="ageInput" required>
-        </div>
+		<div class="mb-3">
+			<label for="ageInput" class="form-label">Age</label>
+			<input asp-for="Age" type="number" class="form-control" id="ageInput" required>
+		</div>
 
-        <div class="mb-3">
-            <label for="doeInput" class="form-label">Year of Employment</label>
-            <input asp-for="YearOfEmployment" type="number" class="form-control" id="doeInput" required>
-        </div>
+		<div class="mb-3">
+			<label for="doeInput" class="form-label">Year of Employment</label>
+			<input asp-for="YearOfEmployment" type="number" class="form-control" id="doeInput" required>
+		</div>
 
-        <button type="submit" class="btn btn-primary">Toevoegen</button>
-    </form>
+		<button type="submit" class="btn btn-primary">Toevoegen</button>
+	</form>
 </div>

@@ -68,5 +68,18 @@ namespace MyPage.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public IActionResult DeletePerson(int id)
+        {
+            var person = _context.People.FirstOrDefault(p => p.Id == id);
+
+            if (person != null)
+            {
+                _context.People.Remove(person);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

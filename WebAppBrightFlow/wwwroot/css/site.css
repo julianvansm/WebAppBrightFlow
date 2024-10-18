@@ -21,6 +21,23 @@ body {
     margin-bottom: 60px;
     font-family: 'Paytone One', sans-serif;
 }
+.name-box {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.delete {
+    padding: 7px;
+    background-color: red;
+    border: solid black 2px;
+    border-radius: 3px;
+    height: min-content;
+
+}
+.delete:hover{
+    background-color: orangered;
+}
 .gray-backdrop {
     position: fixed;
     width: 100vw;
@@ -48,6 +65,7 @@ body {
     border-radius: 5px;
     box-shadow: 4px 4px 9px;
     z-index: 20;
+
 }
 
 .surround-box {
@@ -65,9 +83,9 @@ body {
     min-width: 310px;
 }
 
-    .detail-box p:first-of-type {
-        font-size: 25px;
-    }
+.detail-box p:first-of-type {
+    font-size: 25px;
+}
 
 .w-full {
     width: 100%;
@@ -83,6 +101,7 @@ body {
     justify-content: center;
     align-items: start;
 }
+
 
 .nav-link:hover {
     text-decoration: underline 2px #007793;
