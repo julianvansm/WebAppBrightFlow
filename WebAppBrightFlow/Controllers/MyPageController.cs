@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebAppBrightFlow.Data;
-using Microsoft.EntityFrameworkCore;
 using WebAppBrightFlow.Models;
-using System.Web;
-using System.Linq;
 using System.Diagnostics;
 
 namespace MyPage.Controllers
@@ -17,10 +14,6 @@ namespace MyPage.Controllers
         {
             _context = context;
         }
-
-
-
-
 
         public IActionResult Index(string searchQuery)
         {
